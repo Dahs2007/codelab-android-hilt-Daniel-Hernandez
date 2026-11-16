@@ -1,52 +1,25 @@
-# Using Hilt in your Android app
+# Codelab: Cómo usar Hilt en tu app para Android
 
-This folder contains the source code for the "Using Hilt in your Android app" codelab.
+## Descripción del proyecto
+Este repositorio contiene la solución completada del codelab oficial de Android Developers **"Cómo usar Hilt en tu app para Android"** (*Using Hilt in your Android app*).
 
-The codelab is built in multiple GitHub branches:
-* `main` is the codelab's starting point.
-* `solution` contains the solution to this codelab.
+La aplicación `LoggingApp` registra las interacciones de los botones en una base de datos local utilizando **Room** y muestra el historial ordenado por fecha y hora.
 
+## Conceptos practicados
+* **Configuración de Hilt:** Integración del plugin de Hilt en Gradle y uso de `@HiltAndroidApp` en `LogApplication`.
+* **Inyección de dependencias en Android:** Uso de `@AndroidEntryPoint` e `@Inject` en `MainActivity`, `ButtonsFragment` y `LogsFragment`, eliminando el uso manual de `ServiceLocator`.
+* **Alcance de instancias:** Uso de `@Singleton` en `LoggerLocalDataSource` para mantener una única instancia compartida en toda la aplicación.
+* **Módulos de Hilt (`@Module` y `@InstallIn`):**
+  * `DatabaseModule` con `@Provides` para proveer `AppDatabase` (Room) y `LogDao`.
+  * `NavigationModule` con `@Binds` para vincular la interfaz `AppNavigator` con `AppNavigatorImpl`.
 
-# Introduction
-Dependency injection is a technique widely used in programming and well suited
-to Android development. By following the principles of dependency injection, you
-lay the groundwork for a good app architecture.
+## Problema encontrado y solución
+* **Problema:** Al sincronizar el proyecto por primera vez en Android Studio, Gradle falló con el error `Your project path contains non-ASCII characters` porque la ruta contenía una tilde (`Plataformas Móviles`).
+* **Solución:** Se cerró Android Studio, se renombró la carpeta sin tildes (`Plataformas Moviles`) y se volvió a sincronizar Gradle exitosamente.
 
-Implementing dependency injection provides you with the following advantages:
-* Reusability of code.
-* Ease of refactoring.
-* Ease of testing.
+## Capturas de pantalla
+<img width="498" height="886" alt="image" src="https://github.com/user-attachments/assets/1ef6a5de-fe4a-4174-bb22-bf038fa19dde" />
 
-
-# Pre-requisites
-* Experience with Kotlin syntax.
-* You understand Dependency Injection.
-
-# Getting Started
-1. Install Android Studio, if you don't already have it.
-2. Download the sample.
-3. Import the sample into Android Studio.
-4. Build and run the sample.
+<img width="553" height="1081" alt="image" src="https://github.com/user-attachments/assets/46885566-3f11-4688-8be6-118161fdca63" />
 
 
-# Comparison between different branches
-* [Full codelab comparison](https://github.com/googlecodelabs/android-hilt/compare/main...solution)
-
-
-# License
-
-```
-Copyright (C) 2020 The Android Open Source Project
-
-Licensed under the Apache License, Version 2.0 (the "License");
-you may not use this file except in compliance with the License.
-You may obtain a copy of the License at
-
-    https://www.apache.org/licenses/LICENSE-2.0
-
-Unless required by applicable law or agreed to in writing, software
-distributed under the License is distributed on an "AS IS" BASIS,
-WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-See the License for the specific language governing permissions and
-limitations under the License.
-```
